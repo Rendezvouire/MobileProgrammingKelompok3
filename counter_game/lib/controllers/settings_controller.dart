@@ -1,50 +1,61 @@
 import '../utils/app_constants.dart';
 
 class SettingsController {
+  // Nilai yang SUDAH tersimpan & dipakai game
   int _maxScore = AppConstants.defaultMaxScore;
   bool _deuceEnabled = false;
 
+  // Nilai sementara (draft) selagi user masih di layar Pengaturan
+  int _draftMaxScore = AppConstants.defaultMaxScore;
+  bool _draftDeuceEnabled = false;
+  bool _applyToActiveMatch = false; // checkbox "Status Pertandingan"
+
   int get maxScore => _maxScore;
   bool get deuceEnabled => _deuceEnabled;
+  int get draftMaxScore => _draftMaxScore;
+  bool get draftDeuceEnabled => _draftDeuceEnabled;
+  bool get applyToActiveMatch => _applyToActiveMatch;
 
-  /// Set maxScore langsung dari input angka.
-  /// Return null kalau valid, atau pesan error kalau tidak valid.
-  String? setMaxScore(int newScore) {
-    if (newScore < AppConstants.minMaxScore ||
-        newScore > AppConstants.maxMaxScore) {
+  void increaseDraftMaxScore() {
+    if (_draftMaxScore < AppConstants.maxMaxScore) _draftMaxScore++;
+  }
+
+  void decreaseDraftMaxScore() {
+    if (_draftMaxScore > AppConstants.minMaxScore) _draftMaxScore--;
+  }
+
+  void selectPreset(int presetScore) {
+    _draftMaxScore = presetScore;
+  }
+
+  void setDraftDeuce(bool value) {
+    _draftDeuceEnabled = value;
+  }
+
+  void setApplyToActiveMatch(bool value) {
+    _applyToActiveMatch = value;
+  }
+
+  /// Dipanggil saat tombol "SIMPAN PENGATURAN" ditekan
+  String? saveSettings() {
+    if (_draftMaxScore < AppConstants.minMaxScore ||
+        _draftMaxScore > AppConstants.maxMaxScore) {
       return 'Skor harus antara ${AppConstants.minMaxScore} dan ${AppConstants.maxMaxScore}';
     }
-    _maxScore = newScore;
-    return null;
+    _maxScore = _draftMaxScore;
+    _deuceEnabled = _draftDeuceEnabled;
+    return null; // null = berhasil disimpan
   }
 
-  /// Tombol [+] di UI
-  void increaseMaxScore() {
-    if (_maxScore < AppConstants.maxMaxScore) {
-      _maxScore++;
-    }
+  /// Kalau user keluar tanpa simpan, draft batal
+  void discardDraft() {
+    _draftMaxScore = _maxScore;
+    _draftDeuceEnabled = _deuceEnabled;
   }
 
-  /// Tombol [-] di UI
-  void decreaseMaxScore() {
-    if (_maxScore > AppConstants.minMaxScore) {
-      _maxScore--;
-    }
-  }
-
-  /// Preset: Bulu Tangkis / Voli / Tenis Meja
-  void applyPreset(int presetScore) {
-    setMaxScore(presetScore);
-  }
-
-  /// Toggle "Selisih 2 Poin"
-  void toggleDeuce(bool value) {
-    _deuceEnabled = value;
-  }
-
-  /// Kembalikan ke default (dipanggil kalau user reset settings)
   void resetToDefault() {
     _maxScore = AppConstants.defaultMaxScore;
     _deuceEnabled = false;
+    discardDraft();
   }
 }
