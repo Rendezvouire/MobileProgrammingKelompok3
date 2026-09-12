@@ -1,3 +1,6 @@
+import 'package:flutter_test/flutter_test.dart';
+import 'package:counter_game/controllers/score_controller.dart';
+
 void main() {
   group('ScoreController', () {
     late ScoreController controller;

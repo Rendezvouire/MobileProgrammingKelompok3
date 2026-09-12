@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class ScoreController extends ChangeNotifier {
   int _player1Score = 0;
   int _player2Score = 0;
