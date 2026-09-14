@@ -480,7 +480,7 @@ class _ScoreCounterScreenState extends State {
                                         ),
                                         const SizedBox(height: 14),
                                         const Text(
-                                          'Initial Serve Possession:',
+                                          'Initial Serve Position:',
                                           style: TextStyle(
                                             fontSize: 11,
                                             fontWeight: FontWeight.w700,
