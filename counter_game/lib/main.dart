@@ -195,8 +195,8 @@ class _ScoreCounterScreenState extends State {
                                               OutlinedButton(
                                                 onPressed: () {
                                                   if (tempTarget > 1) {
-                                                    setSettingsState(() =>
-                                                        tempTarget--);
+                                                    setSettingsState(
+                                                        () => tempTarget--);
                                                   }
                                                 },
                                                 style: OutlinedButton.styleFrom(
@@ -359,7 +359,7 @@ class _ScoreCounterScreenState extends State {
                                   ),
                                   const SizedBox(height: 14),
                                   _buildSectionCard(
-                                    title: 'PLAYERS & POSSESSION',
+                                    title: 'PLAYERS & POSITION',
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -832,8 +832,7 @@ class _ScoreCounterScreenState extends State {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(24),
-                        border:
-                            Border.all(color: softBorder, width: 1.5),
+                        border: Border.all(color: softBorder, width: 1.5),
                         boxShadow: [
                           BoxShadow(
                             color: accentPink.withValues(alpha: 0.08),
@@ -877,13 +876,16 @@ class _ScoreCounterScreenState extends State {
                           ),
                           const SizedBox(height: 6),
                           Text(
-                          'Final Score: ' + score1.toString() + ' - ' + score2.toString(),
-                          style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w800,
-                          color: Color(0xFF1E293B),
-                           ),
-                           ),
+                            'Final Score: ' +
+                                score1.toString() +
+                                ' - ' +
+                                score2.toString(),
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w800,
+                              color: Color(0xFF1E293B),
+                            ),
+                          ),
                           const SizedBox(height: 20),
                           SizedBox(
                             width: double.infinity,
@@ -982,7 +984,8 @@ class _ScoreCounterScreenState extends State {
                             ? Icons.sports_tennis_rounded
                             : Icons.shield_outlined,
                         size: 13,
-                        color: isServer ? Colors.white : const Color(0xFF64748B),
+                        color:
+                            isServer ? Colors.white : const Color(0xFF64748B),
                       ),
                       const SizedBox(width: 4),
                       Text(
@@ -990,7 +993,8 @@ class _ScoreCounterScreenState extends State {
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.w800,
-                          color: isServer ? Colors.white : const Color(0xFF64748B),
+                          color:
+                              isServer ? Colors.white : const Color(0xFF64748B),
                           letterSpacing: 0.5,
                         ),
                       ),
