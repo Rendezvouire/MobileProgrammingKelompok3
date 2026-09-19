@@ -37,7 +37,7 @@ final List<HeroModel> heroes = [
     origin: 'Keureutoe, Pirak, Aceh',
     birthDeath: '1870 – 1910',
     biography:
-        'Cut Nyak Meutia adalah pejuang perempuan dari Aceh yang bersama suaminya terlibat dalam perlawanan terhadap Belanda. Ia melanjutkan perjuangan setelah suaminya gugur dan memimpin pasukan dalam perlawanan gerilya. Cut Nyak Meutia gugur dalam pertempuran pada 24 Oktober 1910.',
+        'Cut Nyak Meutia merupakan salah satu pahlawan nasional wanita pemberani asal Tanah Rencong, Aceh, yang mendedikasikan hidupnya untuk menumbangkan kekuasaan kolonial Belanda. Bersama pendamping hidupnya, beliau bahu-membahu menyusun strategi dan melancarkan serangkaian perlawanan sengit terhadap pasukan penjajah. Kehilangan sang suami yang gugur di medan laga tidak lantas mengikis kobaran semangat juangnya. Dengan kepemimpinan yang tangguh, Cut Nyak Meutia langsung mengambil alih komando pasukan dan terus membakar semangat perlawanan lewat taktik perang gerilya yang kerap menyulitkan musuh dari dalam hutan belantara. Pengabdian serta perjuangan gigih beliau akhirnya mencapai puncaknya ketika beliau gugur sebagai syahid dalam pertempuran sengit melawan pertempuran pasukan Belanda pada 24 Oktober 1910.',
     subtitle: 'Pejuang Perempuan & Pemimpin Perlawanan Aceh',
     fullName: 'Cut Nyak Meutia',
   ),
@@ -47,7 +47,7 @@ final List<HeroModel> heroes = [
     origin: 'Yogyakarta',
     birthDeath: '1785 – 1855',
     biography:
-        'Pangeran Diponegoro adalah tokoh yang memimpin Perang Jawa melawan pemerintah kolonial Belanda pada 1825–1830. Perlawanan tersebut menjadi salah satu perang besar yang dihadapi Belanda di Jawa. Setelah ditangkap melalui sebuah perundingan pada 1830, Diponegoro diasingkan hingga wafat di Makassar pada 8 Januari 1855.',
+        'Pangeran Diponegoro merupakan sosok bangsawan sekaligus pahlawan nasional yang memimpin perlawanan bersenjata terhebat melawan pemerintah kolonial Hindia Belanda dalam pertempuran sengit yang dikenal sebagai Perang Jawa (1825–1830). Pergolakan skala besar ini menjadi salah satu episode konflik paling berdarah dan menguras sumber daya finansial maupun militer terbesar yang pernah dihadapi Belanda di Pulau Jawa. Setelah perlawanannya dipatahkan melalui taktik licik jebakan perundingan damai di Magelang pada 1830, beliau ditangkap dan dijatuhi hukuman pengasingan hingga akhirnya mengembuskan napas terakhir dalam penahanan di Makassar pada 8 Januari 1855.',
     subtitle: 'Pemimpin Perang Jawa & Pejuang Kemerdekaan',
     fullName: 'Pangeran Diponegoro',
   ),
@@ -57,7 +57,7 @@ final List<HeroModel> heroes = [
     origin: 'Nganjuk, Jawa Timur',
     birthDeath: '1888 – 1938',
     biography:
-        'Dr. Sutomo adalah dokter dan tokoh pergerakan nasional yang dikenal sebagai salah satu pendiri Boedi Oetomo. Organisasi tersebut menjadi salah satu organisasi penting dalam perkembangan pergerakan nasional Indonesia. Sutomo kemudian aktif dalam berbagai kegiatan sosial dan politik hingga akhir hayatnya.',
+        'Dr. Sutomo merupakan seorang dokter sekaligus pelopor pergerakan nasional yang memegang peranan sangat penting dalam sejarah perjuangan kemerdekaan melalui pendirian organisasi Boedi Oetomo pada tahun 1908. Kelahiran organisasi ini menjadi tonggak sejarah yang amat krusial karena menandai lahirnya era Kebangkitan Nasional serta menginspirasi terbentuknya berbagai pergerakan modern di seluruh pelosok Indonesia. Tidak berhenti pada profesi medis dan pembentukan Boedi Oetomo saja, Dr. Sutomo terus mencurahkan tenaga serta pikirannya secara aktif dalam berbagai pergerakan sosial, pendidikan, dan perjuangan politik nasional hingga akhir hayatnya.',
     subtitle: 'Pendiri Boedi Oetomo & Pelopor Pergerakan Nasional',
     fullName: 'Soebroto',
   ),
@@ -67,7 +67,7 @@ final List<HeroModel> heroes = [
     origin: 'Bonjol, Sumatra Barat',
     birthDeath: '1772 – 1864',
     biography:
-        'Tuanku Imam Bonjol adalah ulama dan pemimpin perlawanan dalam Perang Padri di Sumatera Barat. Ia memimpin perjuangan melawan Belanda dan kemudian ditangkap serta diasingkan ke wilayah Minahasa. Ia wafat di tempat pengasingannya pada 6 November 1864.',
+        'Tuanku Imam Bonjol merupakan seorang ulama karismatik sekaligus pemimpin perlawanan yang gigih dalam kecamuk Perang Padri di Sumatera Barat. Beliau berdiri di garis terdepan menyatukan masyarakat untuk melawan penguasa kolonial Belanda yang berusaha menanamkan pengaruh politik dan ekonominya di wilayah Minangkabau. Setelah bertahun-tahun memimpin perlawanan sengit, beliau akhirnya ditangkap oleh pihak Belanda melalui taktik tipu muslihat perundingan, lalu dipindahkan ke beberapa tempat pengasingan hingga berakhir di wilayah Lotta, Pineleng, Minahasa, Sulawesi Utara. Beliau menghabiskan masa-masa terakhir hidupnya dalam pengasingan tersebut hingga wafat pada 6 November 1864.',
     subtitle: 'Pemimpin Perang Padri & Pejuang Sumatera Barat',
     fullName: 'Muhammad Shahab',
   ),
@@ -77,7 +77,7 @@ final List<HeroModel> heroes = [
     origin: 'Jepara, Jawa Tengah',
     birthDeath: '1879 – 1904',
     biography:
-        'R.A. Kartini dikenal sebagai pelopor kebangkitan dan pendidikan perempuan pribumi. Ia berasal dari keluarga bangsawan Jawa dan banyak menuangkan pemikirannya mengenai pendidikan serta kedudukan perempuan melalui surat-suratnya. Gagasannya kemudian menjadi bagian penting dalam perkembangan pendidikan perempuan di Indonesia.',
+        'Raden Ajeng Kartini merupakan figur pahlawan nasional yang dikenal luas sebagai pelopor emansipasi, kebangkitan, serta hak-hak pendidikan bagi kaum perempuan pribumi di Indonesia. Lahir dari lingkup bangsawan Jawa yang kental dengan tradisi feodal, beliau memanfaatkan privilese pendidikannya untuk mengamati serta mengkritik ketimpangan sosial dan keterbatasan akses pendidikan yang dialami kaum wanita pada masanya. Pemikiran-pemikiran progresif mengenai kesetaraan gender, kebebasan berpikir, dan pentingnya edukasi bagi kaum wanita banyak beliau tuangkan secara mendalam melalui korespondensi surat-surat kepada para sahabatnya di Belanda. Gagasan-gagasan visioner tersebut kelak dibukukan dan menjadi fondasi krusial yang menginspirasi lahirnya gerakan modernisasi serta perluasan akses pendidikan bagi perempuan di seluruh penjuru tanah air.',
     subtitle: 'Pelopor Emansipasi Wanita & Kebangkitan Nasional',
     fullName: 'Raden Ajeng Kartini',
   ),
@@ -87,7 +87,7 @@ final List<HeroModel> heroes = [
     origin: 'Yogyakarta',
     birthDeath: '1889 – 1959',
     biography:
-        'Ki Hajar Dewantara adalah tokoh pendidikan nasional dan pendiri Perguruan Taman Siswa. Ia memperjuangkan kesempatan pendidikan bagi masyarakat pribumi pada masa kolonial. Pemikirannya memberikan pengaruh besar terhadap perkembangan pendidikan Indonesia.',
+        'Ki Hajar Dewantara merupakan sosok pahlawan nasional yang diakui sebagai Bapak Pendidikan Nasional atas kontribusi terbesarnya mendirikan lembaga Perguruan Taman Siswa pada tahun 1922. Di tengah penindasan rezim kolonial Belanda yang membatasi hak belajar hanya untuk kalangan bangsawan, beliau gigih memperjuangkan akses pendidikan yang inklusif dan merata bagi rakyat pribumi biasa. Filosofi pendidikan serta prinsip kepemimpinan yang beliau cetuskan—termasuk semboyan legendaris Ing Ngarsa Sung Tuladha, Ing Madya Mangun Karsa, Tut Wuri Handayani—menjadi cikal bakal dan terus memberikan pengaruh fundamental yang mendalam terhadap arah perkembangan sistem pendidikan di Indonesia hingga saat ini.',
     subtitle: 'Bapak Pendidikan Nasional & Pelopor Pendidikan Rakyat',
     fullName: 'Raden Mas Soewardi Soerjaningrat',
   ),
@@ -97,7 +97,7 @@ final List<HeroModel> heroes = [
     origin: 'Nusa Laut, Maluku Tengah',
     birthDeath: '1800 – 1818',
     biography:
-        'Martha Christina Tiahahu adalah pejuang perempuan dari Maluku yang ikut berjuang bersama Pattimura melawan Belanda pada 1817. Ia ikut dalam beberapa pertempuran sejak usia muda. Setelah ditangkap, ia meninggal di perjalanan menuju pengasingan pada 2 Januari 1818.',
+        'Martha Christina Tiahahu merupakan srikandi gigih asal Maluku yang memegang peranan penting dalam panggung sejarah perjuangan kemerdekaan melalui perlawanan bersenjata melawan penjajahan Belanda pada tahun 1817. Menginjak usia yang sangat muda—yakni baru berumur 17 tahun—beliau sudah berdiri di garis terdepan mendampingi Kapitan Pattimura serta ayahnya sendiri untuk mengangkat senjata dan memimpin pasukan dalam serangkaian pertempuran sengit di wilayah Saparua dan sekitarnya. Meskipun pada akhirnya berhasil ditangkap oleh pasukan kolonial setelah benteng perlawanan jatuh, keteguhan jiwanya tak pernah goyah; beliau menolak bekerja sama hingga akhirnya jatuh sakit dan mengembuskan napas terakhirnya di atas kapal perang Evertzen dalam perjalanan menuju tempat pengasingan di Pulau Jawa pada 2 Januari 1818.',
     subtitle: 'Pejuang Perempuan & Perlawanan Maluku',
     fullName: 'Martha Christina Tiahahu',
   ),
@@ -107,7 +107,7 @@ final List<HeroModel> heroes = [
     origin: 'Badung, Bali',
     birthDeath: '1906 – 1946',
     biography:
-        'I Gusti Ngurah Rai adalah pemimpin perjuangan bersenjata di Bali dalam mempertahankan kemerdekaan Indonesia. Ia memimpin pasukan dalam perlawanan terhadap Belanda dan gugur dalam Pertempuran Margarana pada 20 November 1946.',
+        'I Gusti Ngurah Rai merupakan seorang perwira militer sekaligus pahlawan nasional yang menjadi pimpinan tertinggi perlawanan bersenjata rakyat Bali dalam mempertahankan kedaulatan Republik Indonesia pascaproklamasi kemerdekaan. Sebagai komandan pasukan Ciung Wanara, beliau memimpin konsolidasi kekuatan gerilya untuk menolak tegas bujukan serta intervensi militer Belanda yang hendak mendirikan Negara Indonesia Timur (NIT). Puncak perjuangan gigih beliau terjadi dalam pertempuranPuputan Margarana pada 20 November 1946, di mana beliau bersama seluruh pasukannya memilih bertempur hingga titik darah penghabisan daripada menyerah kepada musuh, hingga akhirnya beliau gugur sebagai pahlawan bangsa di medan laga.',
     subtitle: 'Pemimpin Puputan Margarana & Pejuang Bali',
     fullName: 'I Gusti Ngurah Rai',
   ),
@@ -117,7 +117,7 @@ final List<HeroModel> heroes = [
     origin: 'Bandung, Jawa Barat',
     birthDeath: '1897 – 1945',
     biography:
-        'Otto Iskandardinata merupakan tokoh pergerakan nasional dan salah satu anggota BPUPKI. Ia aktif dalam perjuangan politik serta organisasi pergerakan sebelum dan setelah kemerdekaan Indonesia. Ia juga dikenal dengan julukan Si Jalak Harupat.',
+        'Raden Otto Iskandardinata merupakan seorang tokoh pahlawan nasional dan pejuang pergerakan kemerdekaan Indonesia yang memegang peranan strategis sebagai salah satu anggota Badan Penyelidik Usaha-Usaha Persiapan Kemerdekaan Indonesia (BPUPKI) serta PPKI. Beliau dikenal sangat aktif berkiprah dalam panggung politik nasional dan organisasi kepemudaan, baik pada masa kolonial Hindia Belanda maupun pada era Pasca-Proklamasi Kemerdekaan Indonesia. Karena keberanian, ketegasan, dan sifat pantang menyerah yang konsisten beliau tunjukkan dalam menyuarakan aspirasi rakyat serta menentang kebijakan penjajah, beliau mendapatkan julukan kehormatan yang sangat masyhur, yaitu Si Jalak Harupat.',
     subtitle: 'Pejuang Pergerakan Nasional & Tokoh Jawa Barat',
     fullName: 'Otto Iskandardinata',
   ),
@@ -127,7 +127,7 @@ final List<HeroModel> heroes = [
     origin: 'Saparua, Maluku',
     birthDeath: '1783 – 1817',
     biography:
-        'Pattimura, atau Thomas Matulessy, adalah pemimpin perlawanan rakyat Maluku terhadap Belanda pada 1817. Ia memimpin berbagai perlawanan terhadap kekuasaan kolonial di Maluku. Pattimura akhirnya ditangkap dan dihukum mati pada 16 Desember 1817.',
+        'Kapitan Pattimura, yang memiliki nama asli Thomas Matulessy, merupakan pahlawan nasional yang memimpin pergolakan besar perlawanan rakyat Maluku terhadap kekuasaan kolonial Belanda pada tahun 1817. Beliau dipercaya memegang komando tertinggi pertempuran guna menyatukan para raja dan patih dalam merebut Benteng Duurstede serta melancarkan serangan terhadap armada militer Belanda yang berusaha memonopoli perdagangan rempah-rempah. Meskipun sempat berhasil melumpuhkan kekuatan musuh di wilayah Saparua dan sekitarnya, Pattimura akhirnya tertangkap akibat pengkhianatan dan dijatuhi hukuman mati di tiang gantungan di Ambon pada 16 Desember 1817.',
     subtitle: 'Pemimpin Perlawanan Rakyat Maluku',
     fullName: 'Thomas Matulessy',
   ),
@@ -137,7 +137,7 @@ final List<HeroModel> heroes = [
     origin: 'Purbalingga, Jawa Tengah',
     birthDeath: '1916 – 1950',
     biography:
-        'Jenderal Sudirman merupakan Panglima Besar TNI pertama. Ia memimpin perjuangan mempertahankan kemerdekaan Indonesia, termasuk perang gerilya ketika Belanda melancarkan Agresi Militer II pada 1948. Meskipun mengalami masalah kesehatan, ia tetap memimpin perjuangan hingga kembali ke Yogyakarta pada 1949.',
+        'Jenderal Besar Soedirman merupakan Panglima Besar Tentara Nasional Indonesia pertama yang menjadi simbol keteguhan serta kepemimpinan militer tanah air. Beliau memegang peran vital dalam memimpin jalannya strategi pertahanan untuk mempertahankan proklamasi kemerdekaan Indonesia dari ancaman reokupasi pasukan Belanda, terutama saat terjadinya Agresi Militer Belanda II pada tahun 1948. Meskipun dalam kondisi fisik yang kian memburuk akibat penyakit paru-paru parah yang menggerogotinya, beliau menolak untuk menyerah dan memilih tetap memandu jalannya taktik perang gerilya dengan ditandu masuk-keluar hutan belantara, sebelum akhirnya kembali ke Yogyakarta pada tahun 1949 setelah situasi politik dan militer membaik.',
     subtitle: 'Panglima Besar TNI & Pemimpin Perang Gerilya',
     fullName: 'Raden Soedirman',
   ),
@@ -147,7 +147,7 @@ final List<HeroModel> heroes = [
     origin: 'Gowa, Sulawesi Selatan',
     birthDeath: '1631 – 1670',
     biography:
-        'Sultan Hasanuddin adalah Sultan Gowa yang memimpin perlawanan terhadap VOC. Ia berusaha mempertahankan kedaulatan Kerajaan Gowa dari campur tangan VOC. Karena keberaniannya melawan VOC, ia dikenal dengan julukan Ayam Jantan dari Timur.',
+        'Sultan Hasanuddin merupakan Raja Gowa ke-16 sekaligus pahlawan nasional yang memimpin perlawanan bersenjata gigih menentang ekspansi monopoli perdagangan dan imperialisme maskapai dagang Belanda (VOC) di wilayah Sulawesi Selatan. Beliau mengerahkan seluruh kekuatan militer serta maritim Kerajaan Gowa-Tallo demi mempertahankan integritas wilayah, jalur perdagangan rempah-rempah yang strategis, dan kedaulatan kerajaannya dari campur tangan serta tekanan politik Belanda. Karena keteguhan, keberanian, serta ketangguhannya dalam medan pertempuran yang kerap menyulitkan pasukan musuh, pihak kompeni Belanda sendiri memberikan beliau julukan kehormatan yang sangat legendaris, yaitu De Haantjes van Het Oosten atau Ayam Jantan dari Timur.',
     subtitle: 'Sultan Gowa & Pejuang Anti-VOC',
     fullName: 'Sultan Hasanuddin',
   ),
