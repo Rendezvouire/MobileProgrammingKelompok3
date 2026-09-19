@@ -63,7 +63,7 @@ class DetailScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Bingkai Foto Pahlawan (BoxFit.contain agar tidak terpotong)
+
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -97,7 +97,6 @@ class DetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
 
-                  // Kategori Pahlawan
                   const Text(
                     'PAHLAWAN KEMERDEKAAN NASIONAL',
                     style: TextStyle(
@@ -121,7 +120,6 @@ class DetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
 
-                  // Subtitle Dinamis dari hero_data
                   if (hero.subtitle != null && hero.subtitle!.isNotEmpty) ...[
                     Text(
                       hero.subtitle!,
@@ -134,7 +132,6 @@ class DetailScreen extends StatelessWidget {
                     const SizedBox(height: 4),
                   ],
 
-                  // Full Name Dinamis dari hero_data
                   if (hero.fullName != null && hero.fullName!.isNotEmpty) ...[
                     Text(
                       hero.fullName!,
@@ -159,7 +156,6 @@ class DetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 12),
 
-            // Kartu Info 2: Masa Hidup (Ikon background kuning/oranye pastel)
             _buildInfoCard(
               icon: Icons.calendar_today_outlined,
               iconBgColor: const Color(0xFFFFE8D6),
@@ -168,7 +164,6 @@ class DetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
 
-            // Bagian Biografi & Perjalanan Perjuangan
             Stack(
               children: [
                 Container(
@@ -225,7 +220,7 @@ class DetailScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                // Aksen sudut kanan atas (dekorasi lengkung oranye pastel)
+                
                 Positioned(
                   top: 0,
                   right: 0,
@@ -250,7 +245,6 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  // Widget helper untuk kartu informasi
   Widget _buildInfoCard({
     required IconData icon,
     required Color iconBgColor,
