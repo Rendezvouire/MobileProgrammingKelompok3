@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart'; 
-import 'package:flutter/material.services.dart'; // Untuk Clipboard
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart'; 
 import '../models/hero_model.dart';
 
 class DetailScreen extends StatelessWidget {
