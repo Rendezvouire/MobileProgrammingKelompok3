@@ -212,20 +212,11 @@ class DetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 12),
 
-            // Kartu Info 2: Masa Hidup
+            // Kartu Info 2: Masa Hidup (Ikon diubah jadi warna kuning/oranye pastel)
             _buildInfoCard(
               icon: Icons.calendar_today_outlined,
-              iconBgColor: const Color(0xFFD8F3DC),
-              title: 'MASA HIDUP',
-              content: hero.birthDeath,
-            ),
-            const SizedBox(height: 12),
-
-            // Kartu Info 3: Kelahiran & Wafat
-            _buildInfoCard(
-              icon: Icons.event_note_outlined,
               iconBgColor: const Color(0xFFFFE8D6),
-              title: 'KELAHIRAN & WAFAT',
+              title: 'MASA HIDUP',
               content: hero.birthDeath,
             ),
             const SizedBox(height: 16),
@@ -312,7 +303,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  // Widget helper untuk kartu informasi agar kodi lebih bersih
+  // Widget helper untuk kartu informasi
   Widget _buildInfoCard({
     required IconData icon,
     required Color iconBgColor,
