@@ -120,7 +120,7 @@ class DetailScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Bingkai Foto Pahlawan
+                  // Bingkai Foto Pahlawan (Menggunakan BoxFit.contain agar tidak terpotong)
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -135,7 +135,7 @@ class DetailScreen extends StatelessWidget {
                         hero.image,
                         height: 320,
                         width: double.infinity,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                         errorBuilder: (context, error, stackTrace) {
                           return Container(
                             height: 320,
@@ -189,7 +189,7 @@ class DetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
 
-                  // Nama Lengkap
+                  // Nama Lengkap (bisa disesuaikan dengan hero.fullName jika ada di modelmu)
                   const Text(
                     'Raden Ayu Adipati Kartini Djojoadiningrat',
                     style: TextStyle(
@@ -212,7 +212,7 @@ class DetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 12),
 
-            // Kartu Info 2: Masa Hidup (Ikon diubah jadi warna kuning/oranye pastel)
+            // Kartu Info 2: Masa Hidup (Warna background ikon diubah jadi kuning/oranye pastel)
             _buildInfoCard(
               icon: Icons.calendar_today_outlined,
               iconBgColor: const Color(0xFFFFE8D6),
@@ -303,7 +303,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  // Widget helper untuk kartu informasi
+  // Widget helper untuk kartu informasi agar kode lebih bersih
   Widget _buildInfoCard({
     required IconData icon,
     required Color iconBgColor,
