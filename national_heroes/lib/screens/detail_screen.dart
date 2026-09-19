@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; 
+import 'package:flutter/services.dart'; // Penting untuk fungsi Clipboard
 import '../models/hero_model.dart';
 
 class DetailScreen extends StatelessWidget {
@@ -13,9 +13,9 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9F6F0),
+      backgroundColor: const Color(0xFFF9F6F0), // Latar belakang krem lembut
       appBar: AppBar(
-        backgroundColor: const Color(0xFF234E32),
+        backgroundColor: const Color(0xFF234E32), // Hijau tua khas ala header
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
@@ -42,20 +42,30 @@ class DetailScreen extends StatelessWidget {
           ],
         ),
         actions: [
-          // Tombol Share di AppBar
+          // Tombol Salin (Copy to Clipboard) di pojok kanan atas AppBar
           IconButton(
-            icon: const Icon(Icons.share, color: Colors.white),
-            tooltip: 'Bagikan Pahlawan',
+            icon: const Icon(Icons.copy, color: Colors.white),
+            tooltip: 'Salin Informasi Tokoh',
             onPressed: () {
-              // Teks yang akan dibagikan ke aplikasi lain
-              final String shareMessage = 
-                  'Mengenang jasa pahlawan nasional: ${hero.name} (${hero.birthDeath}).\n\n'
+              // Format teks yang akan disalin
+              final String textToCopy = 
+                  '${hero.name} (${hero.birthDeath})\n'
+                  '${hero.subtitle ?? ""}\n\n'
                   'Daerah Asal: ${hero.origin}\n\n'
-                  'Singkat cerita: ${hero.biography}\n\n'
-                  'Yuk kenali pahlawan Indonesia melalui aplikasi National Heroes!';
-              
-              // Memanggil fungsi share bawaan plugin
-              Share.share(shareMessage);
+                  'Biografi:\n${hero.biography}';
+
+              // Menyalin teks ke clipboard perangkat
+              Clipboard.setData(ClipboardData(text: textToCopy));
+
+              // Menampilkan notifikasi kecil (SnackBar) bahwa teks berhasil disalin
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Informasi ${hero.name} berhasil disalin!'),
+                  backgroundColor: const Color(0xFF234E32),
+                  duration: const Duration(seconds: 2),
+                  behavior: SnackBarBehavior.floating,
+                ),
+              );
             },
           ),
         ],
@@ -82,6 +92,7 @@ class DetailScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Bingkai Foto Pahlawan (BoxFit.contain agar tidak terpotong)
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -114,6 +125,8 @@ class DetailScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
+
+                  // Kategori Pahlawan
                   const Text(
                     'PAHLAWAN KEMERDEKAAN NASIONAL',
                     style: TextStyle(
@@ -124,6 +137,8 @@ class DetailScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
+
+                  // Nama Tokoh
                   Text(
                     hero.name,
                     style: const TextStyle(
@@ -134,6 +149,8 @@ class DetailScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
+
+                  // Subtitle Dinamis dari hero_data
                   if (hero.subtitle != null && hero.subtitle!.isNotEmpty) ...[
                     Text(
                       hero.subtitle!,
@@ -145,6 +162,8 @@ class DetailScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                   ],
+
+                  // Full Name Dinamis dari hero_data
                   if (hero.fullName != null && hero.fullName!.isNotEmpty) ...[
                     Text(
                       hero.fullName!,
@@ -169,7 +188,7 @@ class DetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 12),
 
-            // Kartu Info 2: Masa Hidup
+            // Kartu Info 2: Masa Hidup (Ikon background kuning/oranye pastel)
             _buildInfoCard(
               icon: Icons.calendar_today_outlined,
               iconBgColor: const Color(0xFFFFE8D6),
@@ -235,6 +254,7 @@ class DetailScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                // Aksen sudut kanan atas (dekorasi lengkung oranye pastel)
                 Positioned(
                   top: 0,
                   right: 0,
@@ -259,6 +279,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
+  // Widget helper untuk kartu informasi
   Widget _buildInfoCard({
     required IconData icon,
     required Color iconBgColor,
