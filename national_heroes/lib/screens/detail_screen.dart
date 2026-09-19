@@ -74,10 +74,10 @@ class DetailScreen extends StatelessWidget {
             onPressed: () {
               final String shareMessage = 
                   'Mengenang jasa pahlawan nasional:\n'
-                  '⭐ *${hero.name}* (${hero.birthDeath})\n'
+                  '*${hero.name}* (${hero.birthDeath})\n'
                   '${hero.subtitle ?? ""}\n\n'
-                  '📍 Daerah Asal: ${hero.origin}\n\n'
-                  '📖 Singkat Cerita:\n${hero.biography}\n\n'
+                  'Daerah Asal: ${hero.origin}\n\n'
+                  'Singkat Cerita:\n${hero.biography}\n\n'
                   'Yuk kenali lebih banyak pahlawan Indonesia melalui aplikasi National Heroes!';
 
               Share.share(shareMessage);
