@@ -4,9 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../models/hero_model.dart';
 
-/// Palet warna dari desain Stitch (DESIGN.md + nilai aktual di code.html).
-/// Nama-namanya sengaja dibuat generik supaya kalau Tika sudah mengisi
-/// lib/utils/app_colors.dart, cukup ganti `_C.` menjadi `AppColors.`.
 class _C {
   static const primary = Color(0xFF387B66); // Viridian
   static const primaryDark = Color(0xFF2E6654); // garis bawah AppBar
@@ -23,8 +20,7 @@ class _C {
   static const accent = Color(0x66FDC980); // sudut dekoratif kartu biografi
 }
 
-// Dua font dari desain. Kalau tim memutuskan tidak pakai google_fonts,
-// cukup ubah dua fungsi ini.
+
 TextStyle _serif(
   double size, {
   FontWeight weight = FontWeight.w600,
@@ -69,8 +65,7 @@ class _DetailScreenState extends State<DetailScreen> {
   // Hanya tampilan (belum disimpan permanen).
   bool _bookmarked = false;
 
-  /// "1879 – 1904" -> "1879 – 1904 (25 Tahun)".
-  /// Kalau format tidak terbaca, tampilkan apa adanya.
+
   String get _lifespanLabel {
     final hero = widget.hero;
     final match = RegExp(r'(\d{4})\D+(\d{4})').firstMatch(hero.birthDeath);
@@ -149,9 +144,7 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // AppBar hijau: "Detail Tokoh" + subjudul "TOKOH PAHLAWAN"
-  // ---------------------------------------------------------------------------
+
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
       backgroundColor: _C.primary,
@@ -183,9 +176,6 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // Baris "KEMBALI KE GALERI" + tombol bagikan + tombol bintang
-  // ---------------------------------------------------------------------------
   Widget _buildActionBar() {
     return Row(
       children: [
@@ -235,9 +225,7 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // Kartu potret: foto 4:5 + label + nama
-  // ---------------------------------------------------------------------------
+
   Widget _buildPortraitCard() {
     final hero = widget.hero;
     return Container(
@@ -288,9 +276,7 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // Kartu fakta singkat (ikon hijau muda + label + isi)
-  // ---------------------------------------------------------------------------
+
   Widget _buildFactCard({
     required IconData icon,
     required String label,
@@ -338,11 +324,9 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // Kartu biografi: garis hijau di kiri + sudut emas dekoratif
-  // ---------------------------------------------------------------------------
+
   Widget _buildBiographyCard() {
-    // Biografi dipisah per paragraf kalau Cath memakai '\n\n' di data.
+
     final paragraphs = widget.hero.biography
         .split(RegExp(r'\n\s*\n'))
         .map((p) => p.trim())
