@@ -7,7 +7,7 @@ final List<HeroModel> heroes = [
     origin: 'Purworejo, Jawa Tengah',
     birthDeath: '1922 – 1965',
     biography:
-        'Jenderal Ahmad Yani adalah perwira TNI Angkatan Darat yang pernah menjabat sebagai Menteri/Panglima Angkatan Darat. Ia memiliki peran dalam berbagai operasi militer setelah kemerdekaan Indonesia. Ahmad Yani meninggal pada 1 Oktober 1965 dalam peristiwa Gerakan 30 September.',
+        'Jenderal TNI Anumerta Ahmad Yani merupakan salah satu tokoh militer berpengaruh dalam sejarah Indonesia yang pernah memegang posisi krusial sebagai Menteri/Panglima Angkatan Darat (Men/Pangad). Selama masa baktinya di TNI Angkatan Darat, beliau terlibat aktif dan memegang peran strategis dalam memimpin berbagai operasi militer penting untuk mempertahankan kedaulatan negara serta menumpas berbagai pemberontakan di tanah air pascakemerdekaan. Namun, pengabdian dan karier militernya harus terhenti secara tragis ketika beliau gugur pada 1 Oktober 1965 akibat menjadi salah satu korban penculikan dan pembunuhan dalam peristiwa Gerakan 30 September (G30S).',
     subtitle: 'Panglima Angkatan Darat & Pejuang Kemerdekaan',
     fullName: 'Ahmad Yani',
   ),
