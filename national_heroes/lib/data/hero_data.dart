@@ -17,7 +17,7 @@ final List<HeroModel> heroes = [
     origin: 'Surabaya, Jawa Timur',
     birthDeath: '1920 – 1981',
     biography:
-        'Bung Tomo, yang bernama Sutomo, dikenal karena perannya dalam membangkitkan semangat rakyat Surabaya menjelang dan selama Pertempuran 10 November 1945. Pidato-pidatonya melalui radio menjadi salah satu simbol perjuangan rakyat Surabaya dalam mempertahankan kemerdekaan.',
+        'Sutomo, yang lebih populer disapa Bung Tomo, merupakan figur sentral dalam sejarah perjuangan bangsa yang dikenang berkat kontribusi besarnya dalam membakar gelora semangat dan keberanian warga Surabaya. Menjelang hingga berlangsungnya Pertempuran 10 November 1945, beliau secara konsisten menyiarkan pidato-pidato orasi yang sangat membakar jiwa patriotisme melalui pemancar Radio Pemberontakan. Pekikan takbir dan narasi perlawanan yang dipancarkan lewat udara tersebut berhasil menyatukan serta menggerakkan seluruh lapisan masyarakat Surabaya untuk terus bertahan menghadapi gempuran pasukan sekutu demi mempertahankan kemerdekaan Republik Indonesia.',
     subtitle: 'Pengobar Semangat Perjuangan 10 November',
     fullName: 'Sutomo',
   ),
@@ -27,7 +27,7 @@ final List<HeroModel> heroes = [
     origin: 'Lampadang, Aceh',
     birthDeath: '1848 – 1908',
     biography:
-        'Cut Nyak Dien merupakan pejuang perempuan dari Aceh yang terlibat dalam Perang Aceh melawan Belanda. Setelah suaminya Teuku Umar gugur, ia melanjutkan perjuangan dengan memimpin perlawanan dari pedalaman Aceh. Ia kemudian ditangkap dan diasingkan ke Sumedang hingga wafat pada 6 November 1908.',
+        'Cut Nyak Dien merupakan sosok pahlawan nasional wanita tangguh asal Aceh yang memegang peranan penting dalam perlawanan sengit melawan kolonialisme Belanda selama berlangsungnya Perang Aceh. Duka mendalam atas gugurnya sang suami, Teuku Umar, di medan pertempuran tidak menyurutkan gigihnya tekad perlawanan beliau. Tanpa gentar, Cut Nyak Dien mengambil alih kepemimpinan pasukan dan terus mengorbankan perang gerilya bergerak dari balik belantara pedalaman Aceh. Kendati usia lanjut, kondisi fisik yang kian melemah, serta penglihatan yang memburuk akhirnya membuat beliau tertangkap oleh pihak kolonial, Cut Nyak Dien kemudian diasingkan ke Sumedang, Jawa Barat, tempat beliau menghabiskan sisa hidupnya hingga wafat pada 6 November 1908.',
     subtitle: 'Pejuang Perempuan & Pemimpin Perlawanan Aceh',
     fullName: 'Cut Nyak Dhien',
   ),
