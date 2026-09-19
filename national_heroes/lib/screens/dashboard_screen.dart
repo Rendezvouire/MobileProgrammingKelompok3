@@ -6,10 +6,7 @@ import '../models/hero_model.dart';
 import '../utils/app_colors.dart';
 import 'detail_screen.dart';
 
-/// Tagline tiap tokoh + urutan galeri, sesuai desain Stitch.
-/// Kunci = path gambar di hero_data.dart. Urutan di sini = urutan tampil
-/// (#01 .. #15). Tokoh yang tidak ada di daftar ini tetap tampil di urutan
-/// paling akhir tanpa tagline.
+
 const Map<String, String> _taglines = {
   'assets/images/kartini.jpg': 'Pelopor Emansipasi & Pendidikan Wanita',
   'assets/images/diponegoro.jpg': 'Pemimpin Perang Jawa (1825–1830)',
@@ -172,9 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // AppBar hijau: "TOKOH PAHLAWAN" + "GALERI MUSEUM DIGITAL"
-  // ---------------------------------------------------------------------------
+
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
       backgroundColor: AppColors.primary,
@@ -207,9 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // Kolom pencarian
-  // ---------------------------------------------------------------------------
+
   Widget _buildSearchField() {
     OutlineInputBorder border(Color color, [double width = 1]) =>
         OutlineInputBorder(
@@ -266,9 +259,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // Tampilan kalau pencarian tidak menemukan apa pun
-  // ---------------------------------------------------------------------------
   Widget _buildEmptyState() {
     final highlight = AppText.sans(
       14,
