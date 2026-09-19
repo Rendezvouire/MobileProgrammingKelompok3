@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // Penting untuk fungsi Clipboard
+import 'package:flutter/services.dart'; // Untuk fungsi Clipboard
+import 'package:share_plus/share_plus.dart'; // Untuk fungsi Share
 import '../models/hero_model.dart';
 
 class DetailScreen extends StatelessWidget {
@@ -42,22 +43,19 @@ class DetailScreen extends StatelessWidget {
           ],
         ),
         actions: [
-          // Tombol Salin (Copy to Clipboard) di pojok kanan atas AppBar
+          // 1. Tombol Salin (Copy to Clipboard)
           IconButton(
             icon: const Icon(Icons.copy, color: Colors.white),
-            tooltip: 'Salin Informasi Tokoh',
+            tooltip: 'Salin Informasi',
             onPressed: () {
-              // Format teks yang akan disalin
               final String textToCopy = 
                   '${hero.name} (${hero.birthDeath})\n'
                   '${hero.subtitle ?? ""}\n\n'
                   'Daerah Asal: ${hero.origin}\n\n'
                   'Biografi:\n${hero.biography}';
 
-              // Menyalin teks ke clipboard perangkat
               Clipboard.setData(ClipboardData(text: textToCopy));
 
-              // Menampilkan notifikasi kecil (SnackBar) bahwa teks berhasil disalin
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text('Informasi ${hero.name} berhasil disalin!'),
@@ -66,6 +64,23 @@ class DetailScreen extends StatelessWidget {
                   behavior: SnackBarBehavior.floating,
                 ),
               );
+            },
+          ),
+
+          // 2. Tombol Bagikan (Share ke WhatsApp, dll)
+          IconButton(
+            icon: const Icon(Icons.share, color: Colors.white),
+            tooltip: 'Bagikan Pahlawan',
+            onPressed: () {
+              final String shareMessage = 
+                  'Mengenang jasa pahlawan nasional:\n'
+                  '⭐ *${hero.name}* (${hero.birthDeath})\n'
+                  '${hero.subtitle ?? ""}\n\n'
+                  '📍 Daerah Asal: ${hero.origin}\n\n'
+                  '📖 Singkat Cerita:\n${hero.biography}\n\n'
+                  'Yuk kenali lebih banyak pahlawan Indonesia melalui aplikasi National Heroes!';
+
+              Share.share(shareMessage);
             },
           ),
         ],
@@ -138,7 +153,7 @@ class DetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
 
-                  // Nama Tokoh
+                  // Nama Tokoh (Dinamis)
                   Text(
                     hero.name,
                     style: const TextStyle(
@@ -179,7 +194,7 @@ class DetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
 
-            // Kartu Info 1: Daerah Asal
+            // Kartu Info 1: Daerah Asal (Dinamis)
             _buildInfoCard(
               icon: Icons.location_on_outlined,
               iconBgColor: const Color(0xFFD8F3DC),
@@ -188,7 +203,7 @@ class DetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 12),
 
-            // Kartu Info 2: Masa Hidup (Ikon background kuning/oranye pastel)
+            // Kartu Info 2: Masa Hidup (Dinamis, Ikon background kuning/oranye pastel)
             _buildInfoCard(
               icon: Icons.calendar_today_outlined,
               iconBgColor: const Color(0xFFFFE8D6),
@@ -197,7 +212,7 @@ class DetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
 
-            // Bagian Biografi & Perjalanan Perjuangan
+            // Bagian Biografi & Perjalanan Perjuangan (Dinamis)
             Stack(
               children: [
                 Container(
