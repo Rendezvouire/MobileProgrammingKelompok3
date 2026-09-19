@@ -6,7 +6,6 @@ import '../models/hero_model.dart';
 import '../utils/app_colors.dart';
 import 'detail_screen.dart';
 
-
 const Map<String, String> _taglines = {
   'assets/images/kartini.jpg': 'Pelopor Emansipasi & Pendidikan Wanita',
   'assets/images/diponegoro.jpg': 'Pemimpin Perang Jawa (1825–1830)',
@@ -169,7 +168,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
       backgroundColor: AppColors.primary,
@@ -202,7 +200,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-
   Widget _buildSearchField() {
     OutlineInputBorder border(Color color, [double width = 1]) =>
         OutlineInputBorder(
@@ -219,7 +216,7 @@ class _HomeScreenState extends State<HomeScreen> {
         cursorColor: AppColors.primary,
         style: AppText.sans(14),
         decoration: InputDecoration(
-          hintText: 'Cari nama pahlawan...',
+          hintText: 'Cari kata kunci tentang pahlawan...',
           hintStyle: AppText.sans(
             14,
             color: AppColors.bistre.withAlpha(115),
