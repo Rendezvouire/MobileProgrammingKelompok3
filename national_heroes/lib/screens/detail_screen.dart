@@ -63,7 +63,7 @@ class DetailScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Bingkai Foto Pahlawan (Menggunakan BoxFit.contain agar tidak terpotong)
+                  // Bingkai Foto Pahlawan (BoxFit.contain agar tidak terpotong)
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -121,26 +121,30 @@ class DetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
 
-                  // Subtitle / Peran
-                  const Text(
-                    'Pelopor Emansipasi Wanita & Kebangkitan Nasional',
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF234E32),
+                  // Subtitle Dinamis dari hero_data
+                  if (hero.subtitle != null && hero.subtitle!.isNotEmpty) ...[
+                    Text(
+                      hero.subtitle!,
+                      style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF234E32),
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 4),
+                    const SizedBox(height: 4),
+                  ],
 
-                  // Nama Lengkap
-                  const Text(
-                    'Raden Ayu Adipati Kartini Djojoadiningrat',
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontStyle: FontStyle.italic,
-                      color: Colors.black54,
+                  // Full Name Dinamis dari hero_data
+                  if (hero.fullName != null && hero.fullName!.isNotEmpty) ...[
+                    Text(
+                      hero.fullName!,
+                      style: const TextStyle(
+                        fontSize: 11,
+                        fontStyle: FontStyle.italic,
+                        color: Colors.black54,
+                      ),
                     ),
-                  ),
+                  ],
                 ],
               ),
             ),
@@ -155,7 +159,7 @@ class DetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 12),
 
-            // Kartu Info 2: Masa Hidup (Warna background ikon kuning/oranye pastel)
+            // Kartu Info 2: Masa Hidup (Ikon background kuning/oranye pastel)
             _buildInfoCard(
               icon: Icons.calendar_today_outlined,
               iconBgColor: const Color(0xFFFFE8D6),
@@ -164,7 +168,7 @@ class DetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
 
-            // Bagian Biografi & Perjalanan Perjuangan (Dilengkapi Aksen Sudut Oranye/Peach)
+            // Bagian Biografi & Perjalanan Perjuangan
             Stack(
               children: [
                 Container(
@@ -246,7 +250,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  // Widget helper untuk kartu informasi agar kode lebih bersih
+  // Widget helper untuk kartu informasi
   Widget _buildInfoCard({
     required IconData icon,
     required Color iconBgColor,
