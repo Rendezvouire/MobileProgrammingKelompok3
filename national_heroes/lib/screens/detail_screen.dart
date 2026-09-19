@@ -46,62 +46,23 @@ class DetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Bar Navigasi Atas ("KEMBALI KE GALERI" & Tombol Share/Bookmark)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton.icon(
-                  onPressed: () => Navigator.pop(context),
-                  icon: const Icon(Icons.arrow_back, size: 16, color: Colors.black87),
-                  label: const Text(
-                    'KEMBALI KE GALERI',
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
+            // Bar Navigasi Atas ("KEMBALI KE GALERI") tanpa logo share & bintang
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton.icon(
+                onPressed: () => Navigator.pop(context),
+                icon: const Icon(Icons.arrow_back, size: 16, color: Colors.black87),
+                label: const Text(
+                  'KEMBALI KE GALERI',
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
                   ),
                 ),
-                Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.05),
-                            blurRadius: 4,
-                          ),
-                        ],
-                      ),
-                      child: IconButton(
-                        icon: const Icon(Icons.share_outlined, size: 18, color: Colors.black87),
-                        onPressed: () {},
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Container(
-                      decoration: const BoxDecoration(
-                        color: Color(0xFFFFD166), // Tombol bintang warna kuning/gold
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 4,
-                          ),
-                        ],
-                      ),
-                      child: IconButton(
-                        icon: const Icon(Icons.star, size: 18, color: Colors.white),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+              ),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 8),
 
             // Kartu Utama (Foto & Identitas Tokoh)
             Container(
@@ -189,7 +150,7 @@ class DetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
 
-                  // Nama Lengkap (bisa disesuaikan dengan hero.fullName jika ada di modelmu)
+                  // Nama Lengkap
                   const Text(
                     'Raden Ayu Adipati Kartini Djojoadiningrat',
                     style: TextStyle(
@@ -212,7 +173,7 @@ class DetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 12),
 
-            // Kartu Info 2: Masa Hidup (Warna background ikon diubah jadi kuning/oranye pastel)
+            // Kartu Info 2: Masa Hidup (Warna background ikon sudah kuning/oranye pastel)
             _buildInfoCard(
               icon: Icons.calendar_today_outlined,
               iconBgColor: const Color(0xFFFFE8D6),
