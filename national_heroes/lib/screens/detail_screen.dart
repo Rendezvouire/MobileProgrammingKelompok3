@@ -28,13 +28,14 @@ class DetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Hero Image
-            SizedBox(
+            Container(
               width: double.infinity,
-              height: 300,
+              height: 320,
+              color: Colors.white,
+              padding: const EdgeInsets.symmetric(vertical: 12),
               child: Image.asset(
                 hero.image,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
                 errorBuilder: (context, error, stackTrace) {
                   return Container(
                     color: const Color(0xFFFFF0F6),
@@ -49,14 +50,11 @@ class DetailScreen extends StatelessWidget {
                 },
               ),
             ),
-
-            // Content
             Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Hero Name
                   Text(
                     hero.name,
                     style: const TextStyle(
@@ -65,28 +63,19 @@ class DetailScreen extends StatelessWidget {
                       color: Color(0xFF25232A),
                     ),
                   ),
-
                   const SizedBox(height: 20),
-
-                  // Origin
                   _buildInfoSection(
                     icon: Icons.location_on,
                     title: 'Daerah Asal',
                     content: hero.origin,
                   ),
-
                   const SizedBox(height: 16),
-
-                  // Life Time
                   _buildInfoSection(
                     icon: Icons.calendar_month,
                     title: 'Masa Hidup',
                     content: hero.birthDeath,
                   ),
-
                   const SizedBox(height: 24),
-
-                  // Biography Title
                   const Text(
                     'Biografi Singkat',
                     style: TextStyle(
@@ -95,10 +84,7 @@ class DetailScreen extends StatelessWidget {
                       color: Color(0xFF25232A),
                     ),
                   ),
-
                   const SizedBox(height: 10),
-
-                  // Biography
                   Text(
                     hero.biography,
                     textAlign: TextAlign.justify,
@@ -108,7 +94,6 @@ class DetailScreen extends StatelessWidget {
                       color: Color(0xFF77717A),
                     ),
                   ),
-
                   const SizedBox(height: 30),
                 ],
               ),
@@ -139,9 +124,7 @@ class DetailScreen extends StatelessWidget {
             size: 24,
           ),
         ),
-
         const SizedBox(width: 14),
-
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
