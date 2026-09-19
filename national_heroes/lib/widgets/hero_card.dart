@@ -13,35 +13,36 @@ class HeroCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 2,
-      clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.06),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
+      clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Thumbnail Foto Pahlawan
             Expanded(
               child: Image.asset(
                 hero.image,
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) => Container(
                   color: Colors.grey.shade200,
-                  child: const Icon(
-                    Icons.broken_image,
-                    color: Colors.grey,
-                  ),
+                  child: const Icon(Icons.broken_image, color: Colors.grey),
                 ),
               ),
             ),
-            // Nama Pahlawan
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-              color: Colors.black.withValues(alpha: 0.05),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
               child: Text(
                 hero.name,
                 textAlign: TextAlign.center,
@@ -49,7 +50,8 @@ class HeroCard extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 13,
+                  fontSize: 14,
+                  color: Color(0xFF1E1E1E),
                 ),
               ),
             ),
