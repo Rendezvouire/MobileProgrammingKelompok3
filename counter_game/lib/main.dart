@@ -776,7 +776,7 @@ class _ScoreCounterScreenState extends State {
                       children: [
                         Expanded(
                           child: OutlinedButton.icon(
-                            onPressed: _resetScores,
+                            onPressed: isMatchFinished ? _resetScores : null, 
                             style: OutlinedButton.styleFrom(
                               backgroundColor: Colors.white,
                               side: const BorderSide(
