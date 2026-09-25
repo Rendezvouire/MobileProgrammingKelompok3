@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
 import '../models/hero_model.dart';
+import '../models/comment_model.dart'; 
 
 class ApiService {
   /// true  = pakai assets/national_heroes.json (sementara, tanpa server)
@@ -66,6 +67,24 @@ class ApiService {
     }
     await _send(() => http.post(Uri.parse('$baseUrl/delete_hero.php'),
         headers: _headers, body: jsonEncode({'id': id})));
+  }
+
+  // READ COMMENTS
+  static Future<List<CommentModel>> getComments(int heroId) async {
+    if (useLocalJson) return [];
+    final data = await _send(() => http.get(Uri.parse('$baseUrl/comments.php?hero_id=$heroId')));
+    List list = data['data'] as List? ?? [];
+    return list.map((e) => CommentModel.fromJson(Map<String, dynamic>.from(e))).toList();
+  }
+
+  // ADD COMMENT
+  static Future<void> addComment(CommentModel comment) async {
+    if (useLocalJson) return;
+    await _send(() => http.post(
+          Uri.parse('$baseUrl/comments.php'),
+          headers: _headers,
+          body: jsonEncode(comment.toJson()),
+        ));
   }
 
   static Future<Map<String, dynamic>> _send(Future<http.Response> Function() request) async {
