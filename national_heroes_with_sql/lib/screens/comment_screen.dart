@@ -51,6 +51,7 @@ class _CommentScreenState extends State<CommentScreen> {
     await DatabaseHelper.instance.insertComment(
       widget.postId,
       "Pengguna",
+      text,
     );
 
     _commentController.clear();
