@@ -13,17 +13,17 @@ class CommentModel {
     required this.createdAt,
   });
 
-  factory CommentModel.fromMap(Map<String, dynamic> map) {
+  factory CommentModel.fromMap(Map<String, dynamic> json) {
     return CommentModel(
-      id: map['id'],
-      heroId: map['post_id'],
-      name: map['username'],
-      comment: map['content'],
-      createdAt: DateTime.parse(map['created_at']),
+      id: json['id'],
+      heroId: json['post_id'],
+      name: json['username'],
+      comment: json['content'],
+      createdAt: DateTime.parse(json['created_at']),
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {
       'id': id,
       'post_id': heroId,

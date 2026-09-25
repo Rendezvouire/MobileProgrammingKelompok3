@@ -47,23 +47,23 @@ class DatabaseHelper {
   }
 
   // Mengambil komentar berdasarkan ID Pahlawan / Post
-  Future<List<Map<String, dynamic>>> getCommentsByPostId(int postId) async {
+  Future<List<Map<String, dynamic>>> getCommentsByPostId(int heroId) async {
     final db = await instance.database;
     return await db.query(
       'comments',
       where: 'post_id = ?',
-      whereArgs: [postId],
+      whereArgs: [heroId],
       orderBy: 'created_at DESC',
     );
   }
 
   // Menyimpan komentar baru
-  Future<int> insertComment(int postId, String username, String content) async {
+  Future<int> insertComment(int heroId, String name, String comment) async {
     final db = await instance.database;
     final data = {
-      'post_id': postId,
-      'username': username,
-      'content': content,
+      'post_id': heroId,
+      'username': name,
+      'content': comment,
       'created_at': DateTime.now().toIso8601String(),
     };
     return await db.insert('comments', data);
