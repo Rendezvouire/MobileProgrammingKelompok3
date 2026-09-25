@@ -14,19 +14,17 @@ class CommentItem extends StatelessWidget {
         leading: CircleAvatar(
           backgroundColor: Colors.blue.shade100,
           child: Text(
-            comment.username.isNotEmpty
-                ? comment.username[0].toUpperCase()
-                : 'U',
+            comment.name.isNotEmpty ? comment.name[0].toUpperCase() : 'U',
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         title: Text(
-          comment.username,
+          comment.name,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 4.0),
-          child: Text(comment.content),
+          child: Text(comment.comment),
         ),
         trailing: Text(
           "${comment.createdAt.hour.toString().padLeft(2, '0')}:${comment.createdAt.minute.toString().padLeft(2, '0')}",

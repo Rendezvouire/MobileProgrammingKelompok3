@@ -4,12 +4,12 @@ import '../services/database_helper.dart';
 import '../widgets/comment_item.dart';
 
 class CommentScreen extends StatefulWidget {
-  final int postId;
+  final int heroId;
   final String heroName;
 
   const CommentScreen({
     Key? key,
-    required this.postId,
+    required this.heroId,
     required this.heroName,
   }) : super(key: key);
 
@@ -37,7 +37,7 @@ class _CommentScreenState extends State<CommentScreen> {
   Future<void> _loadComments() async {
     setState(() => _isLoading = true);
     final data =
-        await DatabaseHelper.instance.getCommentsByPostId(widget.postId);
+        await DatabaseHelper.instance.getCommentsByPostId(widget.heroId);
     setState(() {
       _comments = data.map((e) => CommentModel.fromMap(e)).toList();
       _isLoading = false;
@@ -49,7 +49,7 @@ class _CommentScreenState extends State<CommentScreen> {
     if (text.isEmpty) return;
 
     await DatabaseHelper.instance.insertComment(
-      widget.postId,
+      widget.heroId,
       "Pengguna",
       text,
     );
