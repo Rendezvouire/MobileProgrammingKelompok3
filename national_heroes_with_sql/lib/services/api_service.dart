@@ -7,9 +7,9 @@ import '../models/hero_model.dart';
 class ApiService {
   /// true  = pakai assets/national_heroes.json (sementara, tanpa server)
   /// false = pakai API PHP Luby -> MySQL (versi final)
-  static const bool useLocalJson = true;
+  static const bool useLocalJson = false;
 
-  static const String baseUrl = 'http://10.44.59.213:8000';
+  static const String baseUrl = 'http://10.29.39.213:8000';
   static const _headers = {'Content-Type': 'application/json'};
 
   // Penyimpanan sementara di memori (hanya dipakai saat useLocalJson = true)
