@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-import '../services/database_helper.dart';
 import '../models/comment_model.dart';
+import '../services/database_helper.dart';
+import '../widgets/comment_item.dart';
 
 class CommentScreen extends StatefulWidget {
   final int postId;
+  final String heroName;
 
-  const CommentScreen({Key? key, required this.postId}) : super(key: key);
+  const CommentScreen({
+    Key? key,
+    required this.postId,
+    required this.heroName,
+  }) : super(key: key);
 
   @override
   State<CommentScreen> createState() => _CommentScreenState();
@@ -22,7 +28,12 @@ class _CommentScreenState extends State<CommentScreen> {
     _loadComments();
   }
 
-  // 1. Memuat komentar dari Database
+  @override
+  void dispose() {
+    _commentController.dispose();
+    super.dispose();
+  }
+
   Future<void> _loadComments() async {
     setState(() => _isLoading = true);
     final data =
@@ -33,27 +44,25 @@ class _CommentScreenState extends State<CommentScreen> {
     });
   }
 
-  // 2. Menyimpan komentar baru
   Future<void> _submitComment() async {
     final text = _commentController.text.trim();
     if (text.isEmpty) return;
 
-    // Simpan ke DB (Username bisa disesuaikan dengan user yang login)
     await DatabaseHelper.instance.insertComment(
       widget.postId,
       "Pengguna",
-      text,
     );
 
     _commentController.clear();
-    _loadComments(); // Refresh list setelah simpan
+    FocusScope.of(context).unfocus();
+    _loadComments();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Komentar"),
+        title: Text("Komentar - ${widget.heroName}"),
       ),
       body: Column(
         children: [
@@ -62,49 +71,53 @@ class _CommentScreenState extends State<CommentScreen> {
             child: _isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : _comments.isEmpty
-                    ? const Center(child: Text("Belum ada komentar."))
+                    ? const Center(
+                        child: Text(
+                          "Belum ada komentar.\nJadilah yang pertama berkomentar!",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                      )
                     : ListView.builder(
                         itemCount: _comments.length,
                         itemBuilder: (context, index) {
-                          final item = _comments[index];
-                          return ListTile(
-                            leading: const CircleAvatar(
-                              child: Icon(Icons.person),
-                            ),
-                            title: Text(item.username),
-                            subtitle: Text(item.content),
-                            trailing: Text(
-                              "${item.createdAt.hour}:${item.createdAt.minute.toString().padLeft(2, '0')}",
-                              style: const TextStyle(
-                                  fontSize: 12, color: Colors.grey),
-                            ),
-                          );
+                          return CommentItem(comment: _comments[index]);
                         },
                       ),
           ),
 
           const Divider(height: 1),
 
-          // INPUT FIELD KOMENTAR
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-            color: Colors.white,
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: _commentController,
-                    decoration: const InputDecoration(
-                      hintText: "Tulis komentar...",
-                      border: InputBorder.none,
+          // KOLOM INPUT KOMENTAR
+          SafeArea(
+            child: Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+              color: Theme.of(context).cardColor,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _commentController,
+                      decoration: const InputDecoration(
+                        hintText: "Tulis komentar...",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                        ),
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 16.0,
+                          vertical: 10.0,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.send, color: Colors.blue),
-                  onPressed: _submitComment,
-                ),
-              ],
+                  const SizedBox(width: 8),
+                  IconButton(
+                    icon: const Icon(Icons.send, color: Colors.blue),
+                    onPressed: _submitComment,
+                  ),
+                ],
+              ),
             ),
           ),
         ],
