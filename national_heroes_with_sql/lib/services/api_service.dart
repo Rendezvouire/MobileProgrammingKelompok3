@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
 import '../models/hero_model.dart';
-import '../models/comment_model.dart'; 
+import '../models/comment_model.dart';
 
 class ApiService {
   /// true  = pakai assets/national_heroes.json (sementara, tanpa server)
@@ -20,16 +20,21 @@ class ApiService {
     if (_local != null) return _local!;
     final raw = await rootBundle.loadString('assets/national_heroes.json');
     final list = jsonDecode(raw)['data'] as List;
-    _local = list.map((e) => HeroModel.fromJson(Map<String, dynamic>.from(e))).toList();
+    _local = list
+        .map((e) => HeroModel.fromJson(Map<String, dynamic>.from(e)))
+        .toList();
     return _local!;
   }
 
   // READ
   static Future<List<HeroModel>> getHeroes() async {
     if (useLocalJson) return List.of(await _loadLocal());
-    final data = await _send(() => http.get(Uri.parse('$baseUrl/read_heroes.php')));
+    final data =
+        await _send(() => http.get(Uri.parse('$baseUrl/read_heroes.php')));
     final list = data['data'] as List? ?? [];
-    return list.map((e) => HeroModel.fromJson(Map<String, dynamic>.from(e))).toList();
+    return list
+        .map((e) => HeroModel.fromJson(Map<String, dynamic>.from(e)))
+        .toList();
   }
 
   // CREATE
@@ -38,7 +43,10 @@ class ApiService {
       final list = await _loadLocal();
       final newId = list.isEmpty
           ? 1
-          : list.map((h) => int.tryParse(h.id) ?? 0).reduce((a, b) => a > b ? a : b) + 1;
+          : list
+                  .map((h) => int.tryParse(h.id) ?? 0)
+                  .reduce((a, b) => a > b ? a : b) +
+              1;
       list.add(HeroModel.fromJson({...hero.toJson(), 'id': '$newId'}));
       return;
     }
@@ -72,9 +80,12 @@ class ApiService {
   // READ COMMENTS
   static Future<List<CommentModel>> getComments(int heroId) async {
     if (useLocalJson) return [];
-    final data = await _send(() => http.get(Uri.parse('$baseUrl/comments.php?hero_id=$heroId')));
+    final data = await _send(
+        () => http.get(Uri.parse('$baseUrl/comments.php?hero_id=$heroId')));
     List list = data['data'] as List? ?? [];
-    return list.map((e) => CommentModel.fromJson(Map<String, dynamic>.from(e))).toList();
+    return list
+        .map((e) => CommentModel.fromJson(Map<String, dynamic>.from(e)))
+        .toList();
   }
 
   // ADD COMMENT
@@ -87,12 +98,14 @@ class ApiService {
         ));
   }
 
-  static Future<Map<String, dynamic>> _send(Future<http.Response> Function() request) async {
+  static Future<Map<String, dynamic>> _send(
+      Future<http.Response> Function() request) async {
     http.Response res;
     try {
       res = await request().timeout(const Duration(seconds: 10));
     } catch (_) {
-      throw Exception('Tidak dapat terhubung ke server. Pastikan server PHP Luby berjalan.');
+      throw Exception(
+          'Tidak dapat terhubung ke server. Pastikan server PHP Luby berjalan.');
     }
     final Map<String, dynamic> body;
     try {

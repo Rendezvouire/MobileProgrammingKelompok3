@@ -4,32 +4,54 @@ import '../models/comment_model.dart';
 class CommentItem extends StatelessWidget {
   final CommentModel comment;
 
-  const CommentItem({Key? key, required this.comment}) : super(key: key);
+  const CommentItem({super.key, required this.comment});
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
-      child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: Colors.blue.shade100,
-          child: Text(
-            comment.name.isNotEmpty ? comment.name[0].toUpperCase() : 'U',
-            style: const TextStyle(fontWeight: FontWeight.bold),
+    // Format waktu aman dari null
+    String timeString = '';
+    if (comment.createdAt != null) {
+      final hour = comment.createdAt!.hour.toString().padLeft(2, '0');
+      final minute = comment.createdAt!.minute.toString().padLeft(2, '0');
+      timeString = '$hour:$minute';
+    }
+
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.grey[100],
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.grey[300]!),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                comment.name,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                ),
+              ),
+              Text(
+                timeString,
+                style: TextStyle(
+                  color: Colors.grey[600],
+                  fontSize: 12,
+                ),
+              ),
+            ],
           ),
-        ),
-        title: Text(
-          comment.name,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-        subtitle: Padding(
-          padding: const EdgeInsets.only(top: 4.0),
-          child: Text(comment.comment),
-        ),
-        trailing: Text(
-          "${comment.createdAt.hour.toString().padLeft(2, '0')}:${comment.createdAt.minute.toString().padLeft(2, '0')}",
-          style: const TextStyle(fontSize: 12, color: Colors.grey),
-        ),
+          const SizedBox(height: 4),
+          Text(
+            comment.comment,
+            style: const TextStyle(fontSize: 13),
+          ),
+        ],
       ),
     );
   }
