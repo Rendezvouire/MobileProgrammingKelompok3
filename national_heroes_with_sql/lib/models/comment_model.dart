@@ -13,6 +13,7 @@ class CommentModel {
     this.createdAt,
   });
 
+  // Tambahkan fungsi ini agar dikenali oleh ApiService
   factory CommentModel.fromJson(Map<String, dynamic> json) {
     return CommentModel(
       id: json['id'] != null ? int.tryParse(json['id'].toString()) : null,
@@ -36,6 +37,7 @@ class CommentModel {
     };
   }
 
+  // Pertahankan method lama ini jika masih dipakai di bagian UI lain
   factory CommentModel.fromMap(Map<String, dynamic> map) {
     return CommentModel(
       id: map['id'],

@@ -48,8 +48,7 @@ class DetailScreen extends StatelessWidget {
             icon: const Icon(Icons.copy, color: Colors.white),
             tooltip: 'Salin Informasi',
             onPressed: () {
-              final String textToCopy = 
-                  '${hero.name} (${hero.birthDeath})\n'
+              final String textToCopy = '${hero.name} (${hero.birthDeath})\n'
                   '${hero.subtitle ?? ""}\n\n'
                   'Daerah Asal: ${hero.origin}\n\n'
                   'Biografi:\n${hero.biography}';
@@ -72,8 +71,7 @@ class DetailScreen extends StatelessWidget {
             icon: const Icon(Icons.share, color: Colors.white),
             tooltip: 'Bagikan Pahlawan',
             onPressed: () {
-              final String shareMessage = 
-                  'Mengenang jasa pahlawan nasional:\n'
+              final String shareMessage = 'Mengenang jasa pahlawan nasional:\n'
                   '*${hero.name}* (${hero.birthDeath})\n'
                   '${hero.subtitle ?? ""}\n\n'
                   'Daerah Asal: ${hero.origin}\n\n'
@@ -98,7 +96,7 @@ class DetailScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.04),
+                    color: Colors.black.withValues(alpha: 0.04),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -111,7 +109,7 @@ class DetailScreen extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: Colors.brown.withOpacity(0.2),
+                        color: Colors.brown.withValues(alpha: 0.2),
                         width: 6,
                       ),
                       borderRadius: BorderRadius.circular(12),
@@ -166,9 +164,9 @@ class DetailScreen extends StatelessWidget {
                   const SizedBox(height: 4),
 
                   // Subtitle Dinamis dari hero_data
-                  if (hero.subtitle != null && hero.subtitle!.isNotEmpty) ...[
+                  if (hero.subtitle.isNotEmpty) ...[
                     Text(
-                      hero.subtitle!,
+                      hero.subtitle,
                       style: const TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
@@ -179,9 +177,9 @@ class DetailScreen extends StatelessWidget {
                   ],
 
                   // Full Name Dinamis dari hero_data
-                  if (hero.fullName != null && hero.fullName!.isNotEmpty) ...[
+                  if (hero.fullName.isNotEmpty) ...[
                     Text(
-                      hero.fullName!,
+                      hero.fullName,
                       style: const TextStyle(
                         fontSize: 11,
                         fontStyle: FontStyle.italic,
@@ -222,7 +220,7 @@ class DetailScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.04),
+                        color: Colors.black.withValues(alpha: 0.04),
                         blurRadius: 10,
                         offset: const Offset(0, 4),
                       ),
@@ -308,7 +306,7 @@ class DetailScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: 0.02),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
