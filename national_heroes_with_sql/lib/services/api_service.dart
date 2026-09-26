@@ -10,7 +10,7 @@ class ApiService {
   /// false = pakai API PHP Luby -> MySQL (versi final)
   static const bool useLocalJson = false;
 
-  static const String baseUrl = 'http://10.29.39.213:8000';
+  static const String baseUrl = 'http://10.72.236.210:8000';
   static const _headers = {'Content-Type': 'application/json'};
 
   // Penyimpanan sementara di memori (hanya dipakai saat useLocalJson = true)
@@ -81,7 +81,7 @@ class ApiService {
   static Future<List<CommentModel>> getComments(int heroId) async {
     if (useLocalJson) return [];
     final data = await _send(
-        () => http.get(Uri.parse('$baseUrl/comments.php?hero_id=$heroId')));
+        () => http.get(Uri.parse('$baseUrl/comment.php?hero_id=$heroId')));
     List list = data['data'] as List? ?? [];
     return list
         .map((e) => CommentModel.fromJson(Map<String, dynamic>.from(e)))
@@ -92,7 +92,7 @@ class ApiService {
   static Future<void> addComment(CommentModel comment) async {
     if (useLocalJson) return;
     await _send(() => http.post(
-          Uri.parse('$baseUrl/comments.php'),
+          Uri.parse('$baseUrl/comment.php'),
           headers: _headers,
           body: jsonEncode(comment.toJson()),
         ));
@@ -103,9 +103,8 @@ class ApiService {
     http.Response res;
     try {
       res = await request().timeout(const Duration(seconds: 10));
-    } catch (_) {
-      throw Exception(
-          'Tidak dapat terhubung ke server. Pastikan server PHP Luby berjalan.');
+    } catch (e) {
+      throw Exception('Gagal terhubung: $e');
     }
     final Map<String, dynamic> body;
     try {
