@@ -10,7 +10,7 @@ class ApiService {
   /// false = pakai API PHP Luby -> MySQL (versi final)
   static const bool useLocalJson = false;
 
-  static const String baseUrl = 'http://10.72.236.210:8000';
+  static const String baseUrl = 'http://10.29.39.210:8000';
   static const _headers = {'Content-Type': 'application/json'};
 
   // Penyimpanan sementara di memori (hanya dipakai saat useLocalJson = true)
