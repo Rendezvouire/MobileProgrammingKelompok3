@@ -1,39 +1,32 @@
 name: locasnap
-description: "A new Flutter project."
+description: "LocaSnap - dokumentasi lokasi dengan GPS dan kamera."
 publish_to: 'none'
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.13.3 <4.0.0'
-  flutter: '>=3.47.3'
-dependencies:
-  flutter:
-    sdk: flutter
+  sdk: ^3.13.3
 
 dependencies:
   flutter:
     sdk: flutter
-  camera: ^0.11.0+2
   cupertino_icons: ^1.0.8
-  path_provider: ^2.1.2
+
+  # GPS (Taya)
+  geolocator: ^14.0.2
+
+  # Kamera (Cath)
   camera: ^0.11.0+2
-  cupertino_icons: ^1.0.8
   path_provider: ^2.1.2
   path: ^1.9.0
   permission_handler: ^13.0.2
+
+  # API (Tika)
   http: ^1.6.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^5.0.0
-
-flutter:
   flutter_lints: ^5.0.0
 
 flutter:
