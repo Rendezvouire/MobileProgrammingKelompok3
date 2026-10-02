@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
 import '../services/location_service.dart';
@@ -5,7 +7,7 @@ import '../utils/app_colors.dart';
 import '../utils/formatters.dart';
 import '../utils/record_store.dart';
 import '../widgets/festival_widgets.dart';
-import '../widgets/record_photo.dart';
+import 'camera_screen.dart';
 
 class AddRecordScreen extends StatefulWidget {
   const AddRecordScreen({super.key});
@@ -24,7 +26,8 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
   double? _latitude;
   double? _longitude;
   bool _loadingLocation = false;
-  bool _hasPhoto = false;
+  Uint8List? _photoBytes;
+  bool _saving = false;
 
   @override
   void dispose() {
@@ -36,7 +39,12 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
   Future<void> _getLocation() async {
     setState(() => _loadingLocation = true);
     try {
-      final position = await _locationService.getCurrentLocation();
+      final position = await _locationService.getCurrentLocation().timeout(
+        const Duration(seconds: 20),
+        onTimeout: () => throw Exception(
+          'Lokasi belum didapat. Cek izin lokasi dan GPS, lalu coba lagi.',
+        ),
+      );
       if (!mounted) return;
       setState(() {
         _latitude = position.latitude;
@@ -54,20 +62,24 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
     }
   }
 
-  void _takePhoto() {
-    // TODO(Cath): ganti dengan CameraService.takePicture() dan tampilkan
-    // hasilnya lewat widget image_preview.dart.
-    setState(() => _hasPhoto = true);
+  Future<void> _takePhoto() async {
+    final bytes = await Navigator.push<Uint8List>(
+      context,
+      MaterialPageRoute(builder: (_) => const CameraScreen()),
+    );
+    if (bytes == null || !mounted) return;
+    setState(() => _photoBytes = bytes);
   }
 
-  void _save() {
+  Future<void> _save() async {
     final valid = _formKey.currentState?.validate() ?? false;
     if (!valid) return;
 
+    final messenger = ScaffoldMessenger.of(context);
     final latitude = _latitude;
     final longitude = _longitude;
     if (latitude == null || longitude == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
+      messenger.showSnackBar(
         const SnackBar(content: Text('Ambil lokasi dulu sebelum menyimpan')),
       );
       return;
@@ -75,15 +87,24 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
 
     final description = _descriptionController.text.trim();
 
-    // TODO(Tika): ganti dengan ApiService (POST /api/locations, multipart).
-    RecordStore.add(
-      title: _titleController.text.trim(),
-      description: description.isEmpty ? null : description,
-      latitude: latitude,
-      longitude: longitude,
-    );
+    setState(() => _saving = true);
+    try {
+      await RecordStore.add(
+        title: _titleController.text.trim(),
+        description: description.isEmpty ? null : description,
+        latitude: latitude,
+        longitude: longitude,
+        imageBytes: _photoBytes,
+      );
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _saving = false);
+      messenger.showSnackBar(SnackBar(content: Text(e.toString())));
+      return;
+    }
 
-    ScaffoldMessenger.of(context).showSnackBar(
+    if (!mounted) return;
+    messenger.showSnackBar(
       const SnackBar(content: Text('Dokumentasi tersimpan')),
     );
     Navigator.pop(context);
@@ -113,6 +134,7 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
     final latitude = _latitude;
     final longitude = _longitude;
     final hasLocation = latitude != null && longitude != null;
+    final photoBytes = _photoBytes;
 
     return Scaffold(
       appBar: AppBar(title: const FestivalBanner('Dokumentasi Baru')),
@@ -202,11 +224,8 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
                     borderRadius: BorderRadius.circular(14),
                     child: AspectRatio(
                       aspectRatio: 4 / 3,
-                      child: _hasPhoto
-                          ? const PhotoPlaceholder(
-                              color: AppColors.darkGreen,
-                              icon: Icons.check_circle_outline,
-                            )
+                      child: photoBytes != null
+                          ? Image.memory(photoBytes, fit: BoxFit.cover)
                           : Container(
                               color: AppColors.field,
                               child: const Column(
@@ -229,7 +248,7 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
                   ),
                   const SizedBox(height: 12),
                   FestivalButton(
-                    label: _hasPhoto ? 'Ambil ulang foto' : 'Ambil foto',
+                    label: photoBytes != null ? 'Ambil ulang foto' : 'Ambil foto',
                     icon: Icons.photo_camera,
                     color: AppColors.yellow,
                     foreground: AppColors.ink,
@@ -240,10 +259,10 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
             ),
             const SizedBox(height: 6),
             FestivalButton(
-              label: 'Simpan dokumentasi',
+              label: _saving ? 'Menyimpan...' : 'Simpan dokumentasi',
               icon: Icons.save,
               color: AppColors.orange,
-              onPressed: _save,
+              onPressed: _saving ? null : _save,
             ),
           ],
         ),

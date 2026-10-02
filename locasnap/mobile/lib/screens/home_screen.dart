@@ -5,12 +5,24 @@ import '../utils/app_colors.dart';
 import '../utils/record_store.dart';
 import '../widgets/festival_widgets.dart';
 import '../widgets/record_card.dart';
+import '../widgets/server_status.dart';
 import 'add_record_screen.dart';
 import 'detail_screen.dart';
 import 'history_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    RecordStore.refresh();
+  }
 
   void _openAdd(BuildContext context) {
     Navigator.push(
@@ -37,9 +49,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: ValueListenableBuilder<List<LocationRecord>>(
-          valueListenable: RecordStore.records,
-          builder: (context, records, _) {
+        child: ListenableBuilder(
+          listenable: RecordStore.changes,
+          builder: (context, _) {
+            final records = RecordStore.records.value;
+            final loading = RecordStore.loading.value;
+            final error = RecordStore.error.value;
             final recent = RecordStore.newestFirst(records).take(3).toList();
             return ListView(
               padding: const EdgeInsets.fromLTRB(20, 16, 20, 28),
@@ -87,7 +102,10 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 12),
-                if (recent.isEmpty)
+                if (error != null) ServerErrorCard(message: error),
+                if (recent.isEmpty && loading)
+                  const LoadingRecords()
+                else if (recent.isEmpty && error == null)
                   const _EmptyHint()
                 else
                   for (final record in recent)
