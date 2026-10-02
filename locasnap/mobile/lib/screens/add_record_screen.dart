@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../services/location_service.dart';
 import '../utils/app_colors.dart';
 import '../utils/formatters.dart';
 import '../utils/record_store.dart';
@@ -18,8 +19,11 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
 
+  final _locationService = LocationService();
+
   double? _latitude;
   double? _longitude;
+  bool _loadingLocation = false;
   bool _hasPhoto = false;
 
   @override
@@ -29,12 +33,25 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
     super.dispose();
   }
 
-  void _getLocation() {
-    // TODO(Taya): ganti dengan LocationService.getCurrentLocation().
-    setState(() {
-      _latitude = -7.28190;
-      _longitude = 112.79530;
-    });
+  Future<void> _getLocation() async {
+    setState(() => _loadingLocation = true);
+    try {
+      final position = await _locationService.getCurrentLocation();
+      if (!mounted) return;
+      setState(() {
+        _latitude = position.latitude;
+        _longitude = position.longitude;
+      });
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.toString().replaceFirst('Exception: ', '')),
+        ),
+      );
+    } finally {
+      if (mounted) setState(() => _loadingLocation = false);
+    }
   }
 
   void _takePhoto() {
@@ -164,10 +181,14 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
                   ),
                   const SizedBox(height: 12),
                   FestivalButton(
-                    label: hasLocation ? 'Ambil ulang lokasi' : 'Ambil lokasi',
+                    label: _loadingLocation
+                        ? 'Mengambil lokasi...'
+                        : hasLocation
+                            ? 'Ambil ulang lokasi'
+                            : 'Ambil lokasi',
                     icon: Icons.my_location,
                     color: AppColors.blue,
-                    onPressed: _getLocation,
+                    onPressed: _loadingLocation ? null : _getLocation,
                   ),
                 ],
               ),
